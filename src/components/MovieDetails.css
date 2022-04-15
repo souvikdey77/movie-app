@@ -1,0 +1,36 @@
+.movie-content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 10px;
+    height: 400px;
+}
+
+.movie-content img{
+    max-width: 100%;
+}
+
+h4 {
+    color: white;
+}
+
+span {
+    color: white;
+}
+
+.title-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.release-date-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
