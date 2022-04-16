@@ -1,0 +1,13 @@
+.admin-container{
+    color: blanchedalmond;
+}
+
+.admin-title{
+    align-items: center;
+    color: brown;
+}
+
+table, th, td {
+    border: 1px solid salmon;
+    border-collapse: collapse;
+  }
