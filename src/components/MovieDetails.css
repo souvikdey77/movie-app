@@ -11,6 +11,10 @@
     max-width: 100%;
 }
 
+.movie-content a{
+    color: brown;
+}
+
 h4 {
     color: white;
 }
@@ -33,4 +37,11 @@ span {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.movie-details{
+    background-color: brown;
+    padding: 14px;
+    font-family: fantasy;
+    font-size: 14px;
 }

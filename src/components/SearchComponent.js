@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 import './SearchComponent.css';
@@ -37,7 +37,7 @@ const SearchComponent = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {bookings.map((booking, index) => {
+                    {bookings && bookings.map((booking, index) => {
                         return (
                             <tr key={index}>
                                 <td>{booking.email}</td>

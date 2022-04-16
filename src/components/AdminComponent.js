@@ -3,73 +3,57 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router-dom';
 import './AdminComponent.css';
 import SearchComponent from './SearchComponent';
 import FilterByDate from './FilterByDate';
 
 const FETCHALLBOOKING = 'http://localhost:8081/admin-management/bookings/view';
-const UPDATEBOOKING = 'http://localhost:8081/admin-management/update/bookings/';
 const CANCELBOOKING = 'http://localhost:8081/admin-management/bookings/cancel/';
 
 const AdminComponent = () => {
 
-    const activeMovies = [];
+    let navigate = useNavigate();
     const [movies, setMovies] = useState([]);
     const [cancelStatus, setCancelStatus] = useState(false);
-    const [cancelBookingObj, setCancelBookingObj] = useState({
-        "bookingDate": "",
-        "bookingStatus": "",
-        "email": "",
-        "firstName": "",
-        "lastName": "",
-        "movieTitle": "",
-        "numberOfTickets": ""
-    });
 
 
     useEffect(() => {
         fetchAllBooking();
     }, [])
 
-    function fetchAllBooking(){
+    function fetchAllBooking() {
         axios.get(FETCHALLBOOKING)
             .then((response) => setMovies(response.data))
             .catch((error) => console.log(error))
     }
 
     const updateBooking = (movie) => {
-        console.log(movie);
-        const request = {
-            "numberOfTickets": 7,
-            "emailId": "",
-            "firstName": "",
-            "lastName": "",
-            "bookingDate": "",
-        }
-        console.log(UPDATEBOOKING + `${movie.email}`)
-        // axios.put(UPDATEBOOKING+`${movie.email}`, request)
-        //     .then((response) => console.log(response.data))
-        //     .catch((error) => console.log(error))
+        navigate("/update-details",
+            {
+                state: {
+                    movieDetails: movie
+                }
+            });
     }
 
     const cancelBooking = (movie) => {
         axios.get(CANCELBOOKING + `${movie.email}`)
-        .then((response) => {
-            setCancelStatus(response.data.bookingStatus);
-            //setMovies([...movies,response.data])
-        })
-        .catch((error) => console.log(error))    
+            .then((response) => {
+                setCancelStatus(response.data.bookingStatus);
+            })
+            .catch((error) => console.log(error))
     }
 
     useEffect(() => {
-        if(cancelStatus){
+        if (cancelStatus) {
             fetchAllBooking();
         }
-    },[cancelStatus])
+    }, [cancelStatus])
 
     return (
         <div className="admin-container">
-            <h3 className="admin-title">Admin Dashboard</h3>
+            <h3 className="admin-title">Details of bookings</h3>
             <table>
                 <thead>
                     <tr>

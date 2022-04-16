@@ -5,7 +5,7 @@ import './Movie.css';
 
 const IMAGE_API = 'https://image.tmdb.org/t/p/w1280'
 
-const Movie = ({ title, poster_path, overview, vote_average, release_date }) => {
+const Movie = ({ title, poster_path, backdrop_path, overview, vote_average, release_date }) => {
 
     let navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const Movie = ({ title, poster_path, overview, vote_average, release_date }) => 
     }
     return (
         <div className="movie_details">
-            <img src={IMAGE_API + poster_path} alt={title} />
+            <img src={IMAGE_API + poster_path } alt={title} />
             <div className="title">
                 <h5>{title}</h5>
                 <h5>{vote_average}</h5>

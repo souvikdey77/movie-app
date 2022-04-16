@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation, Link } from 'react-router-dom';
 import './MovieDetails.css';
 
-const MovieDetails = props => {
+const MovieDetails = () => {
 
     const location = useLocation();
     const image = location.state.movie_image;
@@ -15,6 +15,8 @@ const MovieDetails = props => {
         <div>
             <div className="movie-content">
                 <Link to="/">Home</Link>
+                <br />
+                <br />
                 <img src={image} alt={title} />
                 <div className="movie-details">
                     <div className="title-container">

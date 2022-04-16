@@ -4,7 +4,7 @@ import axios from 'axios';
 import Movie from './Movie';
 import './MoviesContainer.css';
 
-const popularMovieAPI = 'http://localhost:8081/movie-management/popular/movies';
+const POPULARMOVIEAPI = 'http://localhost:8081/movie-management/popular/movies';
 const SEARCHAPI = 'http://localhost:8081/movie-management/search/movies?input=';
 
 const MoviesContainer = () => {
@@ -13,7 +13,7 @@ const MoviesContainer = () => {
     const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
-        axios.get(popularMovieAPI)
+        axios.get(POPULARMOVIEAPI)
             .then((response) => setMovies(response.data))
             .catch((error) => 'error occured : ' + error);
     }, [])

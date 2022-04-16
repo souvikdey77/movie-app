@@ -11,12 +11,13 @@ const BookTickets = props => {
     const location = useLocation();
     const title = location.state.movie_title;
 
-    const [firstName, setFirstName] = useState(' ');
-    const [lastName, setLastName] = useState(' ');
-    const [email, setEmail] = useState(' ');
-    const [seats, setSeats] = useState(' ');
-    const [date, setDate] = useState(' ');
-    const [bookingStatus, setBookingStatus] = useState(' ');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [seats, setSeats] = useState('');
+    const [date, setDate] = useState('');
+    const [bookingStatus, setBookingStatus] = useState('');
+    const [errorStatus, setErrorStatus] = useState(0);
 
 
     const handleFirstName = (e) => {
@@ -50,7 +51,7 @@ const BookTickets = props => {
         }
         axios.post(CREATEBOOKING, request)
             .then((response) => setBookingStatus(response.data.bookingStatus))
-            .catch((error) => console.log(error))
+            .catch((error) => setErrorStatus(error.response.status))
     }
 
     return (
@@ -83,6 +84,8 @@ const BookTickets = props => {
             </div>
             <button type="text" className="submit" onClick={handleSubmit}>submit</button>
             {bookingStatus && bookingStatus === 'confirmed' ? <span className="success-booking">Your tickets are booked</span> 
+            : null}
+            {errorStatus && errorStatus === 400 ? <span className="error-booking">Booking Failed! Kindly verify the request and submit again</span> 
             : null}
         </div>
     )
