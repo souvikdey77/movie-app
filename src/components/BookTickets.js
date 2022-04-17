@@ -18,6 +18,7 @@ const BookTickets = props => {
     const [date, setDate] = useState('');
     const [bookingStatus, setBookingStatus] = useState('');
     const [errorStatus, setErrorStatus] = useState(0);
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     const handleFirstName = (e) => {
@@ -41,17 +42,23 @@ const BookTickets = props => {
     }
 
     const handleSubmit = (e) => {
+        setErrorStatus(0);
+        setBookingStatus('');
+        setErrorMessage('');
         const request = {
-            "numberOfTickets": seats,
-            "emailId": email,
+            "email": email,
             "firstName": firstName,
             "lastName": lastName,
             "bookingDate": date,
+            "numberOfTickets": seats,
             "movieTitle": title
         }
         axios.post(CREATEBOOKING, request)
             .then((response) => setBookingStatus(response.data.bookingStatus))
-            .catch((error) => setErrorStatus(error.response.status))
+            .catch((error) => {
+                setErrorStatus(error.response.status)
+                setErrorMessage(error.response.data.message)
+            })
     }
 
     return (
@@ -83,10 +90,10 @@ const BookTickets = props => {
                 <label htmlFor="date" className="placeholder">Date</label>
             </div>
             <button type="text" className="submit" onClick={handleSubmit}>submit</button>
-            {bookingStatus && bookingStatus === 'confirmed' ? <span className="success-booking">Your tickets are booked</span> 
-            : null}
-            {errorStatus && errorStatus === 400 ? <span className="error-booking">Booking Failed! Kindly verify the request and submit again</span> 
-            : null}
+            {bookingStatus && bookingStatus === 'confirmed' ? <span className="success-booking">Your tickets are booked</span>
+                : null}
+            {errorStatus && errorStatus === 400 ? <span className="error-booking">{errorMessage}</span>
+                : null}
         </div>
     )
 }
