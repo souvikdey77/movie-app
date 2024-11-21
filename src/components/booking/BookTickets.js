@@ -63,7 +63,7 @@ const BookTickets = props => {
 
     return (
         <div className="form">
-            <div className="title">Welcome to book ticket</div>
+            <div className="title">Welcome to Ticket center</div>
             <div className="input-container ic1">
                 <input id="firstname" className="input" type="text" placeholder=" " onChange={handleFirstName} />
                 <div className="cut"></div>
@@ -85,7 +85,7 @@ const BookTickets = props => {
                 <label htmlFor="seats" className="placeholder">Seats</label>
             </div>
             <div className="input-container ic2">
-                <input id="date" className="input" type="text" placeholder=" " onChange={handleDate} />
+                <input id="date" className="input" type="text" placeholder=" " onChange={handleDate}  />
                 <div className="cut cut-short"></div>
                 <label htmlFor="date" className="placeholder">Date</label>
             </div>

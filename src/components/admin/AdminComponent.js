@@ -5,8 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import './AdminComponent.css';
-import SearchComponent from './SearchComponent';
-import FilterByDate from './FilterByDate';
+import SearchComponent from '../search/SearchComponent';
+import FilterByDate from '../FilterByDate';
 
 const FETCHALLBOOKING = 'http://localhost:8081/admin-management/bookings/view';
 const CANCELBOOKING = 'http://localhost:8081/admin-management/bookings/cancel/';

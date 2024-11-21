@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Movie from './Movie';
+import Movie from '../movie/Movie';
 import './MoviesContainer.css';
 
 const POPULARMOVIEAPI = 'http://localhost:8081/movie-management/popular/movies/10';

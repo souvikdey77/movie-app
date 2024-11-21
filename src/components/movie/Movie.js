@@ -18,7 +18,7 @@ const Movie = ({ title, poster_path, backdrop_path, overview, vote_average, rele
         });
     }
 
-    const movieDetails = (event) => {
+    const movieDetails = () => {
         navigate(
             "/details",
             {
