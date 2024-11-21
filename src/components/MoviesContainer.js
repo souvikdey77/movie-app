@@ -4,7 +4,7 @@ import axios from 'axios';
 import Movie from './Movie';
 import './MoviesContainer.css';
 
-const POPULARMOVIEAPI = 'http://localhost:8081/movie-management/popular/movies';
+const POPULARMOVIEAPI = 'http://localhost:8081/movie-management/popular/movies/10';
 const SEARCHAPI = 'http://localhost:8081/movie-management/search/movies?input=';
 
 const MoviesContainer = () => {
